@@ -1,3 +1,32 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+/* 1. Fix the Image Symbols */
+img[width="15"] {
+    display: inline-block !important;
+    height: 1.1em !important;
+    width: auto !important;
+    vertical-align: middle !important;
+    margin: 0 2px !important;
+    padding: 0 !important;
+    /* Ensure it doesn't push the line height */
+    line-height: 1 !important; 
+}
+
+/* 2. Fix the <em> (italicized text) behavior */
+/* This ensures 'willness' doesn't jump to a new line or create gaps */
+p em {
+    display: inline !important;
+    font-style: italic;
+    /* Reset any weird margins Quartz might put on em tags */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 3. The Paragraph "Glue" */
+/* This forces the whole block to behave as standard text flow */
+p:has(img[width="15"]) {
+    display: block !important;
+    line-height: 1.6 !important; /* Adjust this for vertical spacing between lines */
+    word-spacing: normal !important;
+}
